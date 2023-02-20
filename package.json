@@ -1,0 +1,12 @@
+{
+  "name": "@dhedge/assets",
+  "version": "1.0.0",
+  "description": "Crypto assets",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhedge/crypto-icons.git"
+  },
+  "homepage": "https://github.com/dhedge/crypto-icons",
+  "author": "dHEDGE",
+  "license": "MIT"
+}
