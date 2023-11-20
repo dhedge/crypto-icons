@@ -12,7 +12,13 @@
   "publishConfig": {
     "access": "public"
   },
+  "scripts": {
+    "transform": "SIZE=210 QUALITY=85 node scripts/transform.js"
+  },
   "files": [
     "icons"
-  ]
+  ],
+  "devDependencies": {
+    "sharp": "^0.32.6"
+  }
 }
