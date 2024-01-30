@@ -1,4 +1,5 @@
 # crypto-icons
+
 Crypto icons which are used both on dHEDGE and Toros
 
 ## How to add new icons
@@ -11,7 +12,6 @@ Crypto icons which are used both on dHEDGE and Toros
 
 ## How to run transformation script (compress and resize)
 
-- Put new icon files to src/icons directory 
+- Put new icon files to src/icons directory
 - Run `npm install`
-- Run `npm run transform` script 
-
+- Run `npm run transform` script
