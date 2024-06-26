@@ -14,4 +14,4 @@ Crypto icons which are used both on dHEDGE and Toros
 
 - Put new icon files to src/icons directory
 - Run `npm install`
-- Run `npm run transform` script
+- Run `npm run transform` (`.png` source file) or `npm run transform:svg` (`.svg` source file extension) script

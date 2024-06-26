@@ -3,8 +3,8 @@ const fs = require('fs');
 
 const INPUT_PATH = 'src/icons';
 const OUTPUT_PATH = 'icons';
-const FILE_EXTENSION = 'png';
 
+const FILE_EXTENSION = process.env.EXTENSION || 'png';
 const SIZE = parseInt(process.env.SIZE);
 const QUALITY = parseInt(process.env.QUALITY);
 
