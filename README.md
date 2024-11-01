@@ -8,7 +8,6 @@ Crypto icons which are used both on dHEDGE and Toros
 - optionally run transformation script (see below)
 - Update package version
 - Run `npm install` to update lock file version
-- Run `npm publish`
 
 ## How to run transformation script (compress and resize)
 
