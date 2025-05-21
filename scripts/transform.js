@@ -16,6 +16,7 @@ async function transform(path, sourceExtension = FILE_EXTENSION) {
     if (extension === sourceExtension) {
       await sharp(`${path}/${dirent.name}`)
         .resize({ width: SIZE, height: SIZE, withoutEnlargement: true })
+        .trim()
         .png({ compressionLevel: 7, quality: QUALITY, effort: 10 })
         .toFile(`${OUTPUT_PATH}/${fileName}.png`);
     }
