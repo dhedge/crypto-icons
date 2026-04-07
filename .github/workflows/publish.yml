@@ -11,17 +11,20 @@ jobs:
   build:
     name: Publish
     runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
       - uses: actions/checkout@v4
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
           scope: '@dhedge'
 
-      # Ensure npm 11.5.1 or later is installed for trusted publishing
-      - name: Use pinned npm (Node 22 compatible)
-        run: npm i -g npm@11.5.1
+
+      # If you need to pin npm, ensure the version is compatible with Node.js 24.
+      # - name: Use pinned npm (Node 24 compatible)
+      #   run: npm i -g npm@latest
 
       - run: npm publish
