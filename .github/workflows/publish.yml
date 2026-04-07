@@ -21,7 +21,7 @@ jobs:
           scope: '@dhedge'
 
       # Ensure npm 11.5.1 or later is installed for trusted publishing
-      - name: Update npm
-        run: npm install -g npm@latest
+      - name: Use pinned npm (Node 22 compatible)
+        run: npm i -g npm@11.5.1
 
       - run: npm publish
