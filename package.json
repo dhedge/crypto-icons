@@ -14,7 +14,8 @@
   },
   "scripts": {
     "transform": "SIZE=210 QUALITY=85 node scripts/transform.js",
-    "transform:svg": "SIZE=210 QUALITY=85 EXTENSION=svg node scripts/transform.js"
+    "transform:svg": "SIZE=210 QUALITY=85 EXTENSION=svg node scripts/transform.js",
+    "transform:webp": "SIZE=210 QUALITY=85 EXTENSION=webp node scripts/transform.js"
   },
   "files": [
     "icons"
