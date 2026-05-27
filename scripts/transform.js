@@ -14,9 +14,10 @@ async function transform(path, sourceExtension = FILE_EXTENSION) {
     const [fileName, extension] = dirent.name.split('.');
 
     if (extension === sourceExtension) {
-      await sharp(`${path}/${dirent.name}`)
-        .resize({ width: SIZE, height: SIZE, withoutEnlargement: true })
+      const isSvg = extension === 'svg';
+      await sharp(`${path}/${dirent.name}`, isSvg ? { density: 450 } : {})
         .trim()
+        .resize({ width: SIZE, height: SIZE, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
         .png({ compressionLevel: 7, quality: QUALITY, effort: 10 })
         .toFile(`${OUTPUT_PATH}/${fileName}.png`);
     }
