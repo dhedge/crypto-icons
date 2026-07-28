@@ -7,6 +7,12 @@ const OUTPUT_PATH = 'icons';
 const FILE_EXTENSION = process.env.EXTENSION || 'png';
 const SIZE = parseInt(process.env.SIZE);
 const QUALITY = parseInt(process.env.QUALITY);
+// full-circle corner radius
+const RADIUS = Math.round(SIZE / 2);
+
+const roundedCornersMask = Buffer.from(
+  `<svg width="${SIZE}" height="${SIZE}"><rect width="${SIZE}" height="${SIZE}" rx="${RADIUS}" ry="${RADIUS}"/></svg>`
+);
 
 async function transform(path, sourceExtension = FILE_EXTENSION) {
   const dir = await fs.promises.opendir(path);
@@ -16,8 +22,11 @@ async function transform(path, sourceExtension = FILE_EXTENSION) {
     if (extension === sourceExtension) {
       const isSvg = extension === 'svg';
       await sharp(`${path}/${dirent.name}`, isSvg ? { density: 450 } : {})
-        .trim()
+        // trim only transparent padding; default trim matches the top-left pixel color
+        // and crops away solid tile backgrounds (e.g. logos on colored squares)
+        .trim({ background: { r: 0, g: 0, b: 0, alpha: 0 } })
         .resize({ width: SIZE, height: SIZE, fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+        .composite([{ input: roundedCornersMask, blend: 'dest-in' }])
         .png({ compressionLevel: 7, quality: QUALITY, effort: 10 })
         .toFile(`${OUTPUT_PATH}/${fileName}.png`);
     }
